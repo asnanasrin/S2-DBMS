@@ -1,0 +1,59 @@
+ -- 
+-- Roll No: <05>
+-- Name:<ASNA NASRIN P V>
+-- Program: <ASSIGNMENT 2>
+-- 
+
+
+--
+-- Table structure for table <faculty>
+--
+
+create table faculty(fno char(5),fname varchar(15) not null,doj date not null,specialization varchar(15),primary key(fno));
+
+alter table faculty modify specialization varchar(20);
+ 
+
+
+--
+-- Table structure for table <subject>
+--
+
+create table subject(sname varchar(15) not null,sdate date not null,edate date not null,roomno char(5) not null,primary key(sname,roomno),fno char(5),foreign key(fno) references faculty(fno));
+
+ALTER table subject ADD duration int;
+alter table subject drop column sdate;
+alter table subject drop column edate;
+
+--
+--Table structure for table <teaches>
+--
+
+create table teaches(fno char(5) not null,sname varchar(15) not null,sdate date not null,edate date not null,primary key(fno,sname),foreign key(fno) references faculty(fno),foreign key(sname) references subject(sname));
+
+
+--
+-- Dumping data for table <faculty>
+--
+
+   insert into faculty values(1,'Asna','2020-01-01',"MCA");
+   insert into faculty values(2,'Shahana','2020-03-05',"B-TECH");
+   insert into faculty values(3,'Jeniya','2020-05-10',"M-TECH");
+   insert into faculty values(4,'Fahmitha','2020-07-15',"BCA");
+   insert into faculty values(5,'Jalva','2020-09-20',"MCA");
+
+
+-- Dumping data for table <subject>
+--
+
+  insert into subject values('DBMS','2020-01-02','2020-03-02',101,1);
+  insert into subject values('NETWORK','2020-04-04','2020-04-28',102,2);
+  insert into subject values('IPR','2020-05-11','2020-07-11',103,3);
+  insert into subject values('AOS','2020-09-16','2020-11-16',104,4);
+  insert into subject values('MATHS','2020-09-21','2020-11-21',105,5);
+
+--
+-- SQl Query Statements
+--
+
+-- -----
